@@ -48,7 +48,6 @@ class Sidebar extends Component {
                                     <ul aria-expanded="false" className="collapse">
                                         <li><Link to="/through-labor-export">Through Labor Export</Link></li>
                                         <li><Link to="/other-ugandans">Other Ugandans</Link></li>
-                                        <li><Link to="/escaled-solved-complaints">Solved</Link></li>
                                     </ul>
                                 </li>
                                 <li> <Link className="waves-effect waves-dark" to="/scanned-ugandans"><i className="ti-id-badge"></i><span className="hide-menu">Verified Ugandans</span></Link></li>
