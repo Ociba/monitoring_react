@@ -76,14 +76,22 @@ $(function() {
       maintainAspectRatio: false
     }
   });
-  var pieChart = new Chart(document.getElementById('chart-pie2').getContext("2d"), {
-    type: 'pie',
+  var barsChart = new Chart(document.getElementById('chart-bars2').getContext("2d"), {
+    type: 'bar',
     data: {
-      labels: [ 'Today', 'This Week', 'This Month','This Year' ],
+      labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
       datasets: [{
-        data: [ 180, 272, 100,150 ],
-        backgroundColor: [ '#FF4961', '#ff4a00', '#f4ab55','#119744' ],
-        hoverBackgroundColor: [ '#FF4961', '#ff4a00', '#f4ab55','#119744' ]
+        label: 'Sellers',
+        data: [53, 99, 14, 10, 43, 27],
+        borderWidth: 1,
+        backgroundColor: 'rgba(255, 73, 97, 0.3)',
+        borderColor: '#FF4961'
+      }, {
+        label: 'Customers',
+        data: [55, 74, 20, 90, 67, 97],
+        borderWidth: 1,
+        backgroundColor: 'rgba(255, 145, 73, 0.3)',
+        borderColor: '#f4ab55'
       }]
     },
 
@@ -93,7 +101,82 @@ $(function() {
       maintainAspectRatio: false
     }
   });
+  var barsChart = new Chart(document.getElementById('chart-bars3').getContext("2d"), {
+    type: 'bar',
+    data: {
+      labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
+      datasets: [{
+        label: 'Sellers',
+        data: [53, 99, 14, 10, 43, 27],
+        borderWidth: 1,
+        backgroundColor: 'rgba(255, 73, 97, 0.3)',
+        borderColor: '#FF4961'
+      }, {
+        label: 'Customers',
+        data: [55, 74, 20, 90, 67, 97],
+        borderWidth: 1,
+        backgroundColor: 'rgba(255, 145, 73, 0.3)',
+        borderColor: '#f4ab55'
+      }]
+    },
 
+    // Demo
+    options: {
+      responsive: false,
+      maintainAspectRatio: false
+    }
+  });
+  var graphChart = new Chart(document.getElementById('chart-graph2').getContext("2d"), {
+    type: 'line',
+    data: {
+      labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+      datasets: [{
+        label:           'Sellers',
+        data:            [43, 91, 89, 16, 21, 79, 28],
+        borderWidth:     1,
+        borderColor:     '#ff4a00',
+        borderDash:      [5, 5],
+        fill: false
+      }, {
+        label:           'Customers',
+        data:            [24, 63, 29, 75, 28, 54, 38],
+        borderWidth:     1,
+        borderColor:     '#62d493',
+      }],
+    },
+
+    // Demo
+    options: {
+      responsive: false,
+      maintainAspectRatio: false
+    }
+  });
+
+  var barsChart = new Chart(document.getElementById('chart-bars4').getContext("2d"), {
+    type: 'bar',
+    data: {
+      labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
+      datasets: [{
+        label: 'Sellers',
+        data: [53, 99, 14, 10, 43, 27],
+        borderWidth: 1,
+        backgroundColor: 'rgba(255, 73, 97, 0.3)',
+        borderColor: '#FF4961'
+      }, {
+        label: 'Customers',
+        data: [55, 74, 20, 90, 67, 97],
+        borderWidth: 1,
+        backgroundColor: 'rgba(255, 145, 73, 0.3)',
+        borderColor: '#f4ab55'
+      }]
+    },
+
+    // Demo
+    options: {
+      responsive: false,
+      maintainAspectRatio: false
+    }
+  });
   var radarChart = new Chart(document.getElementById('chart-radar').getContext("2d"), {
     type: 'radar',
     data: {

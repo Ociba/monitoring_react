@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import Cards from './Cards';
+import Graphs from './Graphs';
 
 class Dashboard extends Component {
     render () {
         return (
-            <div className=''>
-                Testing Dashboard
+            <div>
+            < Cards />
+            < Graphs />
             </div>
         );
     }

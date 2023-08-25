@@ -3,8 +3,8 @@ class Footer extends Component {
     render() { 
         return (
             <footer className="footer fixed-bottom">
-                © 2023  Grocery,Agriculture & Accomodation Center
-                <a href="https://jjoome.goproug.com"> Product of Joome</a>
+                Monitoring  © 2023
+                <a href="https://jaajaltd.com/"> Designed by JaaJa IT Solutions -Kampala</a>
             </footer>
         );
     }

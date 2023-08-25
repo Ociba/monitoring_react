@@ -10,6 +10,7 @@ import Stakeholders from './Components/Pages/Stakeholders';
 import GovernmentAgencies from './Components/Pages/GovernmentAgencies';
 import LocalCompanies from './Components/Pages/LocalCompanies';
 import CompaniesAbroad from './Components/Pages/CompaniesAbroad';
+import Staff from './Components/Pages/Staff';
 import EmergencyComplaints from './Components/Pages/EmergencyComplaints';
 import NormalComplaints from './Components/Pages/NormalComplaints';
 import SolvedComplaints from './Components/Pages/SolvedComplaints';
@@ -18,9 +19,20 @@ import EscalatedNormalComplaints from './Components/Pages/EscalatedNormalComplai
 import EscalatedSolvedComplaints from './Components/Pages/EscalatedSolvedComplaints';
 import PublicNormalComplaints from './Components/Pages/PublicNormalComplaints';
 import PublicSolvedComplaints from './Components/Pages/PublicSolvedComplaints';
+import OngoingContracts from './Components/Pages/OngoingContracts';
+import ExpiredContracts from './Components/Pages/ExpiredContracts';
+import TerminatedContracts from './Components/Pages/TerminatedContracts';
+import UgandansAbroadThroughLaborExport from './Components/Pages/UgandansAbroadThroughLaborExport';
+import OtherUgandansAbroad from './Components/Pages/OtherUgandansAbroad';
+import ComplaintEscalation from './Components/Pages/ComplaintEscalation';
+import Roles from './Components/Pages/Roles';
+import StakeholdersPermissions from './Components/Pages/StakeholdersPermissions';
+import VerifiedUgandans from './Components/Pages/VerifiedUgandans';
+
 
 
 import  {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+import Form from './Components/Pages/Form';
 
 class MainContainer extends Component {
     render (){
@@ -39,6 +51,7 @@ class MainContainer extends Component {
                                     <Route path='/government-agencies' element ={<GovernmentAgencies />} />
                                     <Route path='/local-companies' element ={<LocalCompanies />} />
                                     <Route path='/abroad-companies' element ={<CompaniesAbroad />} />
+                                    <Route path='/staff' element ={<Staff />} />
                                     <Route path='/emergency-complaints' element ={<EmergencyComplaints />} />
                                     <Route path='/pending-complaints' element ={<NormalComplaints />} />
                                     <Route path='/solved-complaints' element ={<SolvedComplaints />} />
@@ -50,6 +63,13 @@ class MainContainer extends Component {
                                     <Route path='/on-going-contracts' element ={<OngoingContracts />} />
                                     <Route path='/expired-contracts' element ={<ExpiredContracts />} />
                                     <Route path='/terminated-contracts' element ={<TerminatedContracts />} />
+                                    <Route path='/through-labor-export' element ={<UgandansAbroadThroughLaborExport />} />
+                                    <Route path='/other-ugandans' element ={<OtherUgandansAbroad />} />
+                                    <Route path='/complaint-escalation' element ={<ComplaintEscalation />} />
+                                    <Route path='/roles' element ={<Roles />} />
+                                    <Route path='/stakeholders-permissions' element ={<StakeholdersPermissions />} />
+                                    <Route path='/scanned-ugandans' element={<VerifiedUgandans />} />
+                                    <Route path='/add-stakeholder' element={<Form />} />
                                 </Routes>
                             </div>
                         <Rightmodal />
