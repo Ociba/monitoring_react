@@ -1,10 +1,11 @@
 import React, { Component} from 'react';
 
-import Navbar from './Components/Layouts/Navbar';
-import Sidebar from './Components/Layouts/Sidebar';
-import Breadcrumb from './Components/Layouts/Breadcrumb';
-import Footer from './Components/Layouts/Footer';
-import Rightmodal from './Components/Layouts/Rightmodal';
+// import Navbar from './Components/Layouts/Navbar';
+// import Sidebar from './Components/Layouts/Sidebar';
+// import Breadcrumb from './Components/Layouts/Breadcrumb';
+// import Footer from './Components/Layouts/Footer';
+// import Rightmodal from './Components/Layouts/Rightmodal';
+
 import Dashboard from './Components/Pages/Dashboard';
 import Stakeholders from './Components/Pages/Stakeholders';
 import GovernmentAgencies from './Components/Pages/GovernmentAgencies';
@@ -28,6 +29,7 @@ import ComplaintEscalation from './Components/Pages/ComplaintEscalation';
 import Roles from './Components/Pages/Roles';
 import StakeholdersPermissions from './Components/Pages/StakeholdersPermissions';
 import VerifiedUgandans from './Components/Pages/VerifiedUgandans';
+import Login from './Components/Pages/Login';
 
 
 
@@ -38,14 +40,12 @@ class MainContainer extends Component {
     render (){
         return (
             <Router>
-                <div id='main-wrapper'>
-                    <Navbar />
-                    <Sidebar />
-                    <div class="page-wrapper"  style={{marginBottom:'50px'}}>
-                        <div class="container-fluid" style={{marginTop:'80px'}}>
-                        <Breadcrumb/>
-                            <div className=''>
-                                <Routes>
+                
+                
+                 <div className=''>
+                                
+                <Routes>
+                                    <Route path='/' element ={<Login />} />
                                     <Route path='/my-dashboard' element ={<Dashboard />} />
                                     <Route path='/stake-holders' element ={<Stakeholders />} />
                                     <Route path='/government-agencies' element ={<GovernmentAgencies />} />
@@ -70,13 +70,9 @@ class MainContainer extends Component {
                                     <Route path='/stakeholders-permissions' element ={<StakeholdersPermissions />} />
                                     <Route path='/scanned-ugandans' element={<VerifiedUgandans />} />
                                     <Route path='/add-stakeholder' element={<Form />} />
-                                </Routes>
+                                    </Routes>
                             </div>
-                        <Rightmodal />
-                        </div>
-                    </div>
-                    <Footer />
-                </div>
+                
             </Router>
         );
     }
