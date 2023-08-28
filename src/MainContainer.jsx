@@ -42,37 +42,37 @@ class MainContainer extends Component {
             <Router>
                 
                 
-                 <div className=''>
+                <div className=''>
                                 
-                <Routes>
-                                    <Route path='/' element ={<Login />} />
-                                    <Route path='/my-dashboard' element ={<Dashboard />} />
-                                    <Route path='/stake-holders' element ={<Stakeholders />} />
-                                    <Route path='/government-agencies' element ={<GovernmentAgencies />} />
-                                    <Route path='/local-companies' element ={<LocalCompanies />} />
-                                    <Route path='/abroad-companies' element ={<CompaniesAbroad />} />
-                                    <Route path='/staff' element ={<Staff />} />
-                                    <Route path='/emergency-complaints' element ={<EmergencyComplaints />} />
-                                    <Route path='/pending-complaints' element ={<NormalComplaints />} />
-                                    <Route path='/solved-complaints' element ={<SolvedComplaints />} />
-                                    <Route path='/escalated-emergency-complaints' element ={<EscalatedEmergencyComplaints />} />
-                                    <Route path='/escalated-pending-complaints' element ={<EscalatedNormalComplaints />} />
-                                    <Route path='/escaled-solved-complaints' element ={<EscalatedSolvedComplaints />} />
-                                    <Route path='/public-complaints' element ={<PublicNormalComplaints />} />
-                                    <Route path='/public-solved-complaints' element ={<PublicSolvedComplaints />} />
-                                    <Route path='/on-going-contracts' element ={<OngoingContracts />} />
-                                    <Route path='/expired-contracts' element ={<ExpiredContracts />} />
-                                    <Route path='/terminated-contracts' element ={<TerminatedContracts />} />
-                                    <Route path='/through-labor-export' element ={<UgandansAbroadThroughLaborExport />} />
-                                    <Route path='/other-ugandans' element ={<OtherUgandansAbroad />} />
-                                    <Route path='/complaint-escalation' element ={<ComplaintEscalation />} />
-                                    <Route path='/roles' element ={<Roles />} />
-                                    <Route path='/stakeholders-permissions' element ={<StakeholdersPermissions />} />
-                                    <Route path='/scanned-ugandans' element={<VerifiedUgandans />} />
-                                    <Route path='/add-stakeholder' element={<Form />} />
-                                    </Routes>
-                            </div>
-                
+                    <Routes>
+                        <Route path='/' element ={<Login />} />
+                        <Route path='/my-dashboard' element ={<Dashboard />} />
+                        <Route path='/stake-holders' element ={<Stakeholders />} />
+                        <Route path='/government-agencies' element ={<GovernmentAgencies />} />
+                        <Route path='/local-companies' element ={<LocalCompanies />} />
+                        <Route path='/abroad-companies' element ={<CompaniesAbroad />} />
+                        <Route path='/staff' element ={<Staff />} />
+                        <Route path='/emergency-complaints' element ={<EmergencyComplaints />} />
+                        <Route path='/pending-complaints' element ={<NormalComplaints />} />
+                        <Route path='/solved-complaints' element ={<SolvedComplaints />} />
+                        <Route path='/escalated-emergency-complaints' element ={<EscalatedEmergencyComplaints />} />
+                        <Route path='/escalated-pending-complaints' element ={<EscalatedNormalComplaints />} />
+                        <Route path='/escaled-solved-complaints' element ={<EscalatedSolvedComplaints />} />
+                        <Route path='/public-complaints' element ={<PublicNormalComplaints />} />
+                        <Route path='/public-solved-complaints' element ={<PublicSolvedComplaints />} />
+                        <Route path='/on-going-contracts' element ={<OngoingContracts />} />
+                        <Route path='/expired-contracts' element ={<ExpiredContracts />} />
+                        <Route path='/terminated-contracts' element ={<TerminatedContracts />} />
+                        <Route path='/through-labor-export' element ={<UgandansAbroadThroughLaborExport />} />
+                        <Route path='/other-ugandans' element ={<OtherUgandansAbroad />} />
+                        <Route path='/complaint-escalation' element ={<ComplaintEscalation />} />
+                        <Route path='/roles' element ={<Roles />} />
+                        <Route path='/stakeholders-permissions' element ={<StakeholdersPermissions />} />
+                        <Route path='/scanned-ugandans' element={<VerifiedUgandans />} />
+                        <Route path='/add-stakeholder' element={<Form />} />
+                    </Routes>
+                </div>
+    
             </Router>
         );
     }

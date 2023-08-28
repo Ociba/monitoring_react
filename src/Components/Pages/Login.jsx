@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import Background from './image1.jpg';
 
 class Login extends Component {
     render () {
         return (
-            <React.Fragment><body class="skin-default card-no-border">
+            <React.Fragment>
+            <body class="skin-default card-no-border">
             <section id="wrapper">
-            <div className="login-register">
+            <div className="login-register" style={{backgroundImage: `url(${Background})`,height: "1000px", backgroundRepeat: "no-repeat"}}>
             <div className="login-box card">
                 <div className="card-body">
                     <form className="form-horizontal form-material" id="loginform" action="#">
