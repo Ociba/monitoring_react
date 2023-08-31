@@ -7,7 +7,7 @@ class Sidebar extends Component {
                     <div className="scroll-sidebar">
                         <nav className="sidebar-nav">
                             <ul id="sidebarnav">
-                                <li> <Link className="waves-effect waves-dark" to="/my-dashboard"><i className="ti-home"></i><span className="hide-menu">Dashboard</span></Link></li>
+                                <li> <Link className="waves-effect waves-dark" to="/dashboard"><i className="ti-home"></i><span className="hide-menu">Dashboard</span></Link></li>
                                 <li> <Link className="waves-effect waves-dark" to="/stake-holders"><i className="ti-id-badge"></i><span className="hide-menu">Stakeholders</span></Link></li>
                                 <li> <Link className="waves-effect waves-dark" to="/government-agencies"><i className="ti-anchor"></i><span className="hide-menu">Government Agencies</span></Link></li>
                                 <li> <a className="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i className="ti-layout-grid2"></i><span className="hide-menu">Companies </span></a>

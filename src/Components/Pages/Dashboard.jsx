@@ -10,21 +10,21 @@ class Dashboard extends Component {
     render () {
         return (
             <div id='main-wrapper'>
-                    <Navbar />
+                <Navbar />
+
                     <Sidebar />
-                    <div class="page-wrapper"  style={{marginBottom:'50px'}}>
-                        <div class="container-fluid" style={{marginTop:'80px'}}>
-                        <Breadcrumb/>
-            <div>
-            < Cards />
-            < Graphs />
-            </div>
-            
-            <Rightmodal />
+                        <div class="page-wrapper"  style={{marginBottom:'50px'}}>
+                            <div class="container-fluid" style={{marginTop:'80px'}}>
+                                <Breadcrumb/>
+                            <div>
+                            <Cards/>
+                            <Graphs/>
+                        </div>
+                            <Rightmodal />
                         </div>
                     </div>
-                    <Footer />
-                </div>
+                <Footer />
+            </div>
         );
     }
 }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import jwt_decode from "jwt-decode"; 
+
 class Navbar extends Component {
     render() { 
         return (
@@ -15,9 +17,11 @@ class Navbar extends Component {
                         <li className="nav-item"> <a className="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i className="icon-menu"></i></a> </li>
                         
                     </ul>
-                    <ul className="navbar-nav my-lg-0">s
+                    <ul className="navbar-nav my-lg-0">
                         <li className="nav-item dropdown u-pro">
-                            <a className="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span className="hidden-md-down" style={{textTransform:'uppercase'}}>Mark &nbsp;<i className="ti-angle-down"></i></span> </a>
+                            <a className="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span className="hidden-md-down" style={{textTransform:'uppercase'}}>
+                                {jwt_decode(localStorage.getItem('access_token')).first_name} &nbsp;  {jwt_decode(localStorage.getItem('access_token')).last_name}
+                            &nbsp;<i className="ti-angle-down"></i></span> </a>
                             <a className="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span className="skew-shake-y"> <i className="ti-bell"></i></span>
                                     <div className="notify"> <span className="heartbit" ></span> <span className="point" style={{backgroundColor:'#FF0000', border:'#FF0000'}}></span> </div>
                                 </a>

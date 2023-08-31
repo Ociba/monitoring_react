@@ -7,7 +7,6 @@ import React, { Component} from 'react';
 // import Rightmodal from './Components/Layouts/Rightmodal';
 
 import Dashboard from './Components/Pages/Dashboard';
-import Stakeholders from './Components/Pages/Stakeholders';
 import GovernmentAgencies from './Components/Pages/GovernmentAgencies';
 import LocalCompanies from './Components/Pages/LocalCompanies';
 import CompaniesAbroad from './Components/Pages/CompaniesAbroad';
@@ -27,7 +26,6 @@ import UgandansAbroadThroughLaborExport from './Components/Pages/UgandansAbroadT
 import OtherUgandansAbroad from './Components/Pages/OtherUgandansAbroad';
 import ComplaintEscalation from './Components/Pages/ComplaintEscalation';
 import Roles from './Components/Pages/Roles';
-import StakeholdersPermissions from './Components/Pages/StakeholdersPermissions';
 import VerifiedUgandans from './Components/Pages/VerifiedUgandans';
 import Login from './Components/Pages/Login';
 
@@ -46,8 +44,7 @@ class MainContainer extends Component {
                                 
                     <Routes>
                         <Route path='/' element ={<Login />} />
-                        <Route path='/my-dashboard' element ={<Dashboard />} />
-                        <Route path='/stake-holders' element ={<Stakeholders />} />
+                        <Route path='/dashboard' element ={<Dashboard />} />
                         <Route path='/government-agencies' element ={<GovernmentAgencies />} />
                         <Route path='/local-companies' element ={<LocalCompanies />} />
                         <Route path='/abroad-companies' element ={<CompaniesAbroad />} />
@@ -67,7 +64,6 @@ class MainContainer extends Component {
                         <Route path='/other-ugandans' element ={<OtherUgandansAbroad />} />
                         <Route path='/complaint-escalation' element ={<ComplaintEscalation />} />
                         <Route path='/roles' element ={<Roles />} />
-                        <Route path='/stakeholders-permissions' element ={<StakeholdersPermissions />} />
                         <Route path='/scanned-ugandans' element={<VerifiedUgandans />} />
                         <Route path='/add-stakeholder' element={<Form />} />
                     </Routes>
