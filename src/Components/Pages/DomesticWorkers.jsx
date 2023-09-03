@@ -93,7 +93,7 @@ class DomesticWorkers extends Component {
                             <tr key={worker.id}>
                                 <td>{index + 1}</td>
                                 <td>{worker.traveller.contact.full_name}</td>
-                                <td>{worker.traveller.education_level}</td>
+                                <td>{worker.traveller.education_level.toUpperCase()}</td>
                                 <td>{worker.local_company.contact.full_name}</td>
                                 <td>{worker.foreign_company.contact.full_name}</td>
                                 <td>
@@ -107,23 +107,24 @@ class DomesticWorkers extends Component {
                     <button
                         onClick={() => this.handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
-                        className="btn btn-sm btn-primary"
+                        className={`btn btn-sm btn-primary ${currentPage === 1 ? 'disabled' : ''}`}
                     >
                         Previous
                     </button>
-                    {Array.from({ length: totalPages }, (_, i) => (
+                    &nbsp;
+                    {/* {Array.from({ length: totalPages }, (_, i) => (
                         <button
                             key={i}
                             onClick={() => this.handlePageChange(i + 1)}
-                            className={currentPage === i + 1 ? 'active' : ''}
+                            className={`btn btn-sm ${currentPage === i + 1 ? 'active btn-primary' : 'btn-light'}`}
                         >
                             {i + 1}
                         </button>
-                    ))}
+                    ))} */}
                     <button
                         onClick={() => this.handlePageChange(currentPage + 1)}
                         disabled={currentPage === totalPages}
-                        className="btn btn-sm btn-primary"
+                        className={`btn btn-sm btn-primary ${currentPage === totalPages ? 'disabled' : ''}`}
                     >
                         Next
                     </button>
