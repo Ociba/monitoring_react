@@ -159,7 +159,7 @@ class Companies extends Component {
                 <Sidebar />
                 <div className='page-wrapper' style={{ marginBottom: '50px' }}>
                     <div className='container-fluid' style={{ marginTop: '80px' }}>
-                        <Breadcrumb />
+                        <Breadcrumb pageName="Companies" breadcrumbs={['Home', 'Companies']}/>
                         <div className=''>
                             <div className='d-flex justify-content-between mb-3'>
                                 <div className='form-inline'>

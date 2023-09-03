@@ -126,6 +126,16 @@ class Sidebar extends Component {
                 </li>
                 <li>
                     {" "}
+                    <Link
+                    className="waves-effect waves-dark"
+                    to="/domestic-workers"
+                    >
+                    <i className="ti-id-badge"></i>
+                    <span className="hide-menu">Domestic Workers</span>
+                    </Link>
+                </li>
+                <li>
+                    {" "}
                     <a
                     className="has-arrow waves-effect waves-dark"
                     href="javascript:void(0)"

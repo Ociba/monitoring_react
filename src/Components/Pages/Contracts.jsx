@@ -13,7 +13,7 @@ class Contracts extends Component {
                     <Sidebar />
                     <div class="page-wrapper"  style={{marginBottom:'50px'}}>
                         <div class="container-fluid" style={{marginTop:'80px'}}>
-                        <Breadcrumb/>
+                        <Breadcrumb pageName="Contracts" breadcrumbs={['Home', 'Contracts']}/>
             <div className=''>
                 Testing Ongoing Contracts
             </div>

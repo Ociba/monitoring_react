@@ -184,7 +184,7 @@ class Travellers extends Component {
                 <Sidebar />
                 <div className="page-wrapper" style={{ marginBottom: '50px' }}>
                     <div className="container-fluid" style={{ marginTop: '80px' }}>
-                        <Breadcrumb />
+                        <Breadcrumb pageName="Travellers" breadcrumbs={['Home', 'Travellers']}/>
                         <div className="">
                             {this.renderTable()}
                             {this.renderPagination()}

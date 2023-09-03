@@ -14,6 +14,7 @@ import PublicNormalComplaints from './Components/Pages/PublicNormalComplaints';
 import PublicSolvedComplaints from './Components/Pages/PublicSolvedComplaints';
 import Contracts from './Components/Pages/Contracts';
 import Travellers from './Components/Pages/Travellers';
+import DomesticWorkers from './Components/Pages/DomesticWorkers';
 import ComplaintEscalation from './Components/Pages/ComplaintEscalation';
 import Roles from './Components/Pages/Roles';
 import Login from './Components/Pages/Login';
@@ -47,6 +48,7 @@ class MainContainer extends Component {
                         <Route path='/public-solved-complaints' element ={<PublicSolvedComplaints />} />
                         <Route path='/contracts' element ={<Contracts />} />
                         <Route path='/travellers' element ={<Travellers />} />
+                        <Route path='/domestic-workers' element ={<DomesticWorkers />} />
                         <Route path='/complaint-escalation' element ={<ComplaintEscalation />} />
                         <Route path='/roles' element ={<Roles />} />
                         <Route path='/add-stakeholder' element={<Form />} />

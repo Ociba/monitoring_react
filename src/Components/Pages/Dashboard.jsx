@@ -15,7 +15,7 @@ class Dashboard extends Component {
                     <Sidebar />
                         <div class="page-wrapper"  style={{marginBottom:'50px'}}>
                             <div class="container-fluid" style={{marginTop:'80px'}}>
-                                <Breadcrumb/>
+                            <Breadcrumb pageName="Dashboard" breadcrumbs={['Home', 'Dashboard']} />
                             <div>
                             <Cards/>
                             <Graphs/>

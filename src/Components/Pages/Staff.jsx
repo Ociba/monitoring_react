@@ -13,7 +13,7 @@ class Staff extends Component {
                     <Sidebar />
                     <div class="page-wrapper"  style={{marginBottom:'50px'}}>
                         <div class="container-fluid" style={{marginTop:'80px'}}>
-                        <Breadcrumb/>
+                        <Breadcrumb pageName="Staff" breadcrumbs={['Home', 'Staff']}/>
             <div className=''>
                 Testing Staff
             </div>
