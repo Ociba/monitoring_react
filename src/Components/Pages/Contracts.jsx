@@ -5,7 +5,7 @@ import Breadcrumb from './Breadcrumb'
 import Rightmodal from './Rightmodal'
 import Footer from './Footer'
 
-class TerminatedContracts extends Component {
+class Contracts extends Component {
     render () {
         return (
             <div id='main-wrapper'>
@@ -15,7 +15,7 @@ class TerminatedContracts extends Component {
                         <div class="container-fluid" style={{marginTop:'80px'}}>
                         <Breadcrumb/>
             <div className=''>
-                Testing Terminated Contracts
+                Testing Ongoing Contracts
             </div>
             
             <Rightmodal />
@@ -26,4 +26,4 @@ class TerminatedContracts extends Component {
         );
     }
 }
-export default TerminatedContracts;
+export default Contracts;

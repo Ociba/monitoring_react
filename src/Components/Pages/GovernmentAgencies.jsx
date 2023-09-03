@@ -12,6 +12,8 @@ class GovernmentAgencies extends Component {
             agencies: [], // Initialize an empty array to store fetched data
             searchQuery: '',
             filterType: 'all', // Initial filter is set to 'all'
+            currentPage: 1, // Initial page number
+            itemsPerPage: 10, // Number of items to display per page
         };
     }
 
@@ -44,8 +46,12 @@ class GovernmentAgencies extends Component {
         this.setState({ filterType: event.target.value });
     };
 
+    handlePageChange = (page) => {
+        this.setState({ currentPage: page });
+    };
+
     render() {
-        const { agencies, searchQuery, filterType } = this.state;
+        const { agencies, searchQuery, filterType, currentPage, itemsPerPage } = this.state;
 
         // Filter agencies based on the filterType
         const filteredAgencies = agencies.filter((agency) => {
@@ -60,9 +66,15 @@ class GovernmentAgencies extends Component {
             agency.contact.full_name.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
-        const tableRows = searchedAgencies.map((agency, index) => (
+        // Calculate pagination variables
+        const totalPages = Math.ceil(searchedAgencies.length / itemsPerPage);
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentAgencies = searchedAgencies.slice(startIndex, endIndex);
+
+        const tableRows = currentAgencies.map((agency, index) => (
             <tr key={agency.id}>
-                <td>{index+1}</td>
+                <td>{index + 1}</td>
                 <td>{agency.contact.full_name}</td>
                 <td>
                     <span className={`badge badge-${agency.type === 'ministry' ? 'primary' : 'info'}`}>
@@ -72,11 +84,25 @@ class GovernmentAgencies extends Component {
                 <td>{agency.email.address}</td>
                 <td>{agency.phones[index]?.number}</td>
                 <td>{agency.addresses.city}</td>
-                <td> 
+                <td>
                     <button className='btn btn-info btn-sm'>View More</button>
                 </td>
             </tr>
         ));
+
+        // Generate pagination buttons
+        const paginationButtons = [];
+        for (let i = 1; i <= totalPages; i++) {
+            paginationButtons.push(
+                <button
+                    key={i}
+                    className={`btn ${i === currentPage ? 'btn-primary' : 'btn-light'}`}
+                    onClick={() => this.handlePageChange(i)}
+                >
+                    {i}
+                </button>
+            );
+        }
 
         return (
             <div id='main-wrapper'>
@@ -120,10 +146,28 @@ class GovernmentAgencies extends Component {
                                         <th>Options</th> {/* Options column header */}
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    {tableRows}
-                                </tbody>
+                                <tbody>{tableRows}</tbody>
                             </table>
+                            <div className='pagination'>
+                                <button
+                                    className='btn btn-light'
+                                    onClick={() => this.handlePageChange(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                >
+                                    Previous
+                                </button>
+                                {paginationButtons}
+                                <button
+                                    className='btn btn-light'
+                                    onClick={() => this.handlePageChange(currentPage + 1)}
+                                    disabled={currentPage === totalPages}
+                                >
+                                    Next
+                                </button>
+                                <div className='pagination-info mt-2 ml-3 mb-2'>
+                                    Page {currentPage} of {totalPages}, Showing {startIndex + 1}-{endIndex} of {searchedAgencies.length} items
+                                </div>
+                            </div>
                         </div>
                         <Rightmodal />
                     </div>

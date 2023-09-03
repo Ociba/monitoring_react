@@ -12,9 +12,7 @@ import EscalatedNormalComplaints from './Components/Pages/EscalatedNormalComplai
 import EscalatedSolvedComplaints from './Components/Pages/EscalatedSolvedComplaints';
 import PublicNormalComplaints from './Components/Pages/PublicNormalComplaints';
 import PublicSolvedComplaints from './Components/Pages/PublicSolvedComplaints';
-import OngoingContracts from './Components/Pages/OngoingContracts';
-import ExpiredContracts from './Components/Pages/ExpiredContracts';
-import TerminatedContracts from './Components/Pages/TerminatedContracts';
+import Contracts from './Components/Pages/Contracts';
 import Travellers from './Components/Pages/Travellers';
 import ComplaintEscalation from './Components/Pages/ComplaintEscalation';
 import Roles from './Components/Pages/Roles';
@@ -47,9 +45,7 @@ class MainContainer extends Component {
                         <Route path='/escaled-solved-complaints' element ={<EscalatedSolvedComplaints />} />
                         <Route path='/public-complaints' element ={<PublicNormalComplaints />} />
                         <Route path='/public-solved-complaints' element ={<PublicSolvedComplaints />} />
-                        <Route path='/on-going-contracts' element ={<OngoingContracts />} />
-                        <Route path='/expired-contracts' element ={<ExpiredContracts />} />
-                        <Route path='/terminated-contracts' element ={<TerminatedContracts />} />
+                        <Route path='/contracts' element ={<Contracts />} />
                         <Route path='/travellers' element ={<Travellers />} />
                         <Route path='/complaint-escalation' element ={<ComplaintEscalation />} />
                         <Route path='/roles' element ={<Roles />} />

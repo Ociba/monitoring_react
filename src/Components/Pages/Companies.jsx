@@ -14,6 +14,8 @@ class Companies extends Component {
             filterType: 'all', // Initial filter is set to 'all'
             sortBy: '', // Initial sorting column is empty
             sortOrder: 'asc', // Initial sorting order is ascending
+            currentPage: 1, // Initial page number
+            itemsPerPage: 10, // Number of items to display per page
         };
     }
 
@@ -66,8 +68,12 @@ class Companies extends Component {
         this.setState({ sortBy: column, sortOrder });
     };
 
+    handlePageChange = (page) => {
+        this.setState({ currentPage: page });
+    };
+
     render() {
-        const { companies, searchQuery, filterType, sortBy, sortOrder } = this.state;
+        const { companies, searchQuery, filterType, sortBy, sortOrder, currentPage, itemsPerPage } = this.state;
 
         // Filter companies based on the filterType
         const filteredCompanies = companies.filter((company) => {
@@ -93,9 +99,15 @@ class Companies extends Component {
             return columnA < columnB ? -order : columnA > columnB ? order : 0;
         });
 
-        const tableRows = sortedCompanies.map((company, index) => (
+        // Calculate pagination variables
+        const totalPages = Math.ceil(sortedCompanies.length / itemsPerPage);
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentCompanies = sortedCompanies.slice(startIndex, endIndex);
+
+        const tableRows = currentCompanies.map((company, index) => (
             <tr key={company.id}>
-                <td>{index+1}</td>
+                <td>{index + 1}</td>
                 <td>{company.contact.full_name}</td>
                 <td>{company.email ? company.email.address : 'N/A'}</td>
                 <td>{company.registration_number}</td>
@@ -126,6 +138,20 @@ class Companies extends Component {
                 return null;
             }
         };
+
+        // Generate pagination buttons
+        const paginationButtons = [];
+        for (let i = 1; i <= totalPages; i++) {
+            paginationButtons.push(
+                <button
+                    key={i}
+                    className={`btn ${i === currentPage ? 'btn-primary' : 'btn-light'}`}
+                    onClick={() => this.handlePageChange(i)}
+                >
+                    {i}
+                </button>
+            );
+        }
 
         return (
             <div id='main-wrapper'>
@@ -177,6 +203,26 @@ class Companies extends Component {
                                 </thead>
                                 <tbody>{tableRows}</tbody>
                             </table>
+                            <div className='pagination'>
+                                <button
+                                    className='btn btn-light'
+                                    onClick={() => this.handlePageChange(currentPage - 1)}
+                                    disabled={currentPage === 1}
+                                >
+                                    Previous
+                                </button>
+                                {paginationButtons}
+                                <button
+                                    className='btn btn-light'
+                                    onClick={() => this.handlePageChange(currentPage + 1)}
+                                    disabled={currentPage === totalPages}
+                                >
+                                    Next
+                                </button>
+                                <div className='pagination-info mt-2 ml-2 mb-2'>
+                                    Page {currentPage} of {totalPages}, Showing {startIndex + 1}-{endIndex} of {sortedCompanies.length} items
+                                </div>
+                            </div>
                         </div>
                         <Rightmodal />
                     </div>

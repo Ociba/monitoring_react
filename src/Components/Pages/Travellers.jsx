@@ -9,23 +9,24 @@ class Travellers extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            travellers: [], // Initialize with an empty array
-            filteredTravellers: [], // Initialize filtered travellers with all travellers
+            travellers: [],
+            filteredTravellers: [],
             searchQuery: '',
-            filterType: 'all', // Default filter value
-            filterVisaType: 'all', // Default Visa Type filter value
+            filterType: 'all',
+            filterVisaType: 'all',
+            currentPage: 1,
+            itemsPerPage: 10,
         };
     }
 
     componentDidMount() {
-        // Fetch your JSON data and update the state with it
         fetch('http://localhost:8000/api/v1/travellers/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + localStorage.getItem('access_token'),
             },
-        }) // Replace with your API endpoint
+        })
             .then((response) => response.json())
             .then((data) => {
                 if (data.detail) {
@@ -62,7 +63,7 @@ class Travellers extends Component {
             const fullName = traveller.contact.full_name.toLowerCase();
             const documentNumber = traveller.document_number.toLowerCase();
             const query = searchQuery.toLowerCase();
-            
+
             return filterTypeMatch && filterVisaTypeMatch && (fullName.includes(query) || documentNumber.includes(query));
         });
 
@@ -70,22 +71,28 @@ class Travellers extends Component {
     }
 
     removeUnderScore(documentType) {
-        // Split the document type by underscores, convert each part to title case,
-        // and then join them back with spaces
-        return documentType.split('_').map(part => part.charAt(0).toLocaleUpperCase() + part.slice(1)).join(' ');
+        return documentType.split('_').map((part) => part.charAt(0).toLocaleUpperCase() + part.slice(1)).join(' ');
+    }
+
+    changePage(newPage) {
+        this.setState({ currentPage: newPage });
     }
 
     renderTable() {
-        const { filteredTravellers, filterType, searchQuery, filterVisaType } = this.state;
+        const { filteredTravellers, filterType, searchQuery, filterVisaType, currentPage, itemsPerPage } = this.state;
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentTravellers = filteredTravellers.slice(startIndex, endIndex);
 
         return (
             <div>
-                <div className='d-flex justify-content-between mb-3'>
+                <div className="d-flex justify-content-between mb-3">
                     <div className="mb-3">
-                        <input type="text" className='form-control' placeholder='Name or Doc Number' value={searchQuery} onChange={this.handleSearchChange} />
+                        <input type="text" className="form-control" placeholder="Name or Doc Number" value={searchQuery} onChange={this.handleSearchChange} />
                     </div>
                     <div className="mb-3">
-                        <select name="filterVisaType" value={filterVisaType} onChange={this.handleFilterChange} className='form-control'>
+                        <select name="filterVisaType" value={filterVisaType} onChange={this.handleFilterChange} className="form-control">
                             <option value="all">All Visa Types</option>
                             <option value="domestic_worker">Domestic Worker Visa</option>
                             <option value="student_visa">Student Visa</option>
@@ -107,9 +114,9 @@ class Travellers extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredTravellers.map((traveller, index) => (
+                        {currentTravellers.map((traveller, index) => (
                             <tr key={traveller.id}>
-                                <td>{index+1}</td>
+                                <td>{startIndex + index + 1}</td>
                                 <td>{traveller.contact.full_name}</td>
                                 <td>{traveller.parent.full_name}</td>
                                 <td>{traveller.next_of_kin.full_name}</td>
@@ -125,7 +132,21 @@ class Travellers extends Component {
                                     )}
                                 </td>
                                 <td>{traveller.document_number}</td>
-                                <td>{this.removeUnderScore(traveller.travel_visa)}</td>
+                                <td>
+                                    {traveller.travel_visa === 'domestic_worker' ? (
+                                        <span className="badge badge-primary">
+                                            {this.removeUnderScore(traveller.travel_visa)}
+                                        </span>
+                                    ) : traveller.travel_visa === 'student_visa' ? (
+                                        <span className="badge badge-warning text-white">
+                                            {this.removeUnderScore(traveller.travel_visa)}
+                                        </span>
+                                    ) : (
+                                        <span className="badge badge-info">
+                                            {this.removeUnderScore(traveller.travel_visa)}
+                                        </span>
+                                    )}
+                                </td>
                                 <td>
                                     <button className="btn btn-info btn-sm">View More</button>
                                 </td>
@@ -137,16 +158,36 @@ class Travellers extends Component {
         );
     }
 
+    renderPagination() {
+        const { filteredTravellers, currentPage, itemsPerPage } = this.state;
+        const totalPages = Math.ceil(filteredTravellers.length / itemsPerPage);
+
+        return (
+            <div className="pagination mb-2">
+                <button className='btn btn-primary' onClick={() => this.changePage(currentPage - 1)} disabled={currentPage === 1}>
+                    Previous
+                </button>
+                &nbsp;
+                <button className='btn btn-primary' onClick={() => this.changePage(currentPage + 1)} disabled={currentPage === totalPages}>
+                    Next
+                </button>
+
+                <span className='mt-2 ml-2 mb-2'>{`Page ${currentPage} of ${totalPages}`}</span>
+            </div>
+        );
+    }
+
     render() {
         return (
-            <div id='main-wrapper'>
+            <div id="main-wrapper">
                 <Navbar />
                 <Sidebar />
                 <div className="page-wrapper" style={{ marginBottom: '50px' }}>
                     <div className="container-fluid" style={{ marginTop: '80px' }}>
                         <Breadcrumb />
-                        <div className=''>
+                        <div className="">
                             {this.renderTable()}
+                            {this.renderPagination()}
                         </div>
                         <Rightmodal />
                     </div>
