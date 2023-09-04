@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import Breadcrumb from './Breadcrumb';
 import Rightmodal from './Rightmodal';
 import Footer from './Footer';
+import BASE_URL from '../apiEndPoints';
 
 class Companies extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Companies extends Component {
 
     componentDidMount() {
         // Fetch data from the API
-        fetch('http://localhost:8000/api/v1/companies', {
+        fetch(BASE_URL+'/api/v1/companies', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

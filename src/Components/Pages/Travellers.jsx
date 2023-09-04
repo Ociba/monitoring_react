@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import Breadcrumb from './Breadcrumb';
 import Rightmodal from './Rightmodal';
 import Footer from './Footer';
+import BASE_URL from '../apiEndPoints';
 
 class Travellers extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Travellers extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/v1/travellers/', {
+        fetch(BASE_URL+'/api/v1/travellers/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

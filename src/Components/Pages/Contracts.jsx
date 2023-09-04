@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import Breadcrumb from './Breadcrumb';
 import Rightmodal from './Rightmodal';
 import Footer from './Footer';
+import BASE_URL from '../apiEndPoints';
 
 class Contracts extends Component {
     constructor() {
@@ -20,7 +21,7 @@ class Contracts extends Component {
 
     componentDidMount() {
         // Fetch contract data from the API endpoint
-        fetch('http://localhost:8000/api/v1/contracts/', {
+        fetch(BASE_URL+'/api/v1/contracts/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

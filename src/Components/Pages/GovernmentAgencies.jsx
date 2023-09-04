@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import Breadcrumb from './Breadcrumb';
 import Rightmodal from './Rightmodal';
 import Footer from './Footer';
+import BASE_URL from '../apiEndPoints';
 
 class GovernmentAgencies extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class GovernmentAgencies extends Component {
 
     componentDidMount() {
         // Fetch data from the API
-        fetch('http://localhost:8000/api/v1/government_bodies/', {
+        fetch(BASE_URL+'/api/v1/government_bodies/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
