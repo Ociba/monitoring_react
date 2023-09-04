@@ -3,7 +3,6 @@ import React, { Component} from 'react';
 import Dashboard from './Components/Pages/Dashboard';
 import GovernmentAgencies from './Components/Pages/GovernmentAgencies';
 import Companies from './Components/Pages/Companies';
-import Staff from './Components/Pages/Staff';
 import EmergencyComplaints from './Components/Pages/EmergencyComplaints';
 import NormalComplaints from './Components/Pages/NormalComplaints';
 import SolvedComplaints from './Components/Pages/SolvedComplaints';
@@ -37,7 +36,6 @@ class MainContainer extends Component {
                         <Route path='/dashboard' element ={<Dashboard />} />
                         <Route path='/government-agencies' element ={<GovernmentAgencies />} />
                         <Route path='/companies' element ={<Companies />} />
-                        <Route path='/staff' element ={<Staff />} />
                         <Route path='/emergency-complaints' element ={<EmergencyComplaints />} />
                         <Route path='/pending-complaints' element ={<NormalComplaints />} />
                         <Route path='/solved-complaints' element ={<SolvedComplaints />} />
