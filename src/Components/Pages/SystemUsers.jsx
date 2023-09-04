@@ -5,7 +5,7 @@ import Breadcrumb from './Breadcrumb'
 import Rightmodal from './Rightmodal'
 import Footer from './Footer'
 
-class Staff extends Component {
+class SystemUsers extends Component {
     render () {
         return (
             <div id='main-wrapper'>
@@ -13,7 +13,7 @@ class Staff extends Component {
                     <Sidebar />
                     <div class="page-wrapper"  style={{marginBottom:'50px'}}>
                         <div class="container-fluid" style={{marginTop:'80px'}}>
-                        <Breadcrumb pageName="Staff" breadcrumbs={['Home', 'Staff']}/>
+                        <Breadcrumb pageName="Staff" breadcrumbs={['Home', 'SystemUsers']}/>
             <div className=''>
                 Testing Staff
             </div>
@@ -26,4 +26,4 @@ class Staff extends Component {
         );
     }
 }
-export default Staff;
+export default SystemUsers;
