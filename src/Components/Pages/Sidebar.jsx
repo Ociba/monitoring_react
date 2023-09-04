@@ -38,7 +38,7 @@ class Sidebar extends Component {
                     {" "}
                     <Link className="waves-effect waves-dark" to="/staff">
                     <i className="ti-user"></i>
-                    <span className="hide-menu">Staff</span>
+                    <span className="hide-menu">System Users</span>
                     </Link>
                 </li>
                 <li>
