@@ -21,27 +21,18 @@ class Sidebar extends Component {
                     to="/government-agencies"
                     >
                     <i className="ti-anchor"></i>
-                    <span className="hide-menu">Government Agencies</span>
+                    <span className="hide-menu">Gov't Agencies</span>
                     </Link>
                 </li>
                 <li>
                     {" "}
-                    <a
-                        className="has-arrow waves-effect waves-dark"
-                        href="javascript:void(0)"
-                        aria-expanded="false"
+                    <Link
+                    className="waves-effect waves-dark"
+                    to="/companies"
                     >
-                    <i className="ti-layout-grid2"></i>
-                    <span className="hide-menu">Companies </span>
-                    </a>
-                    <ul aria-expanded="false" className="collapse">
-                    <li>
-                        <Link to="/local-companies">Local Companies</Link>
-                    </li>
-                    <li>
-                        <Link to="/abroad-companies">Companies Abroad</Link>
-                    </li>
-                    </ul>
+                    <i className="ti-anchor"></i>
+                    <span className="hide-menu">Companies</span>
+                    </Link>
                 </li>
                 <li>
                     {" "}
@@ -115,53 +106,32 @@ class Sidebar extends Component {
                 </li>
                 <li>
                     {" "}
-                    <a
-                    className="has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
+                    <Link
+                    className="waves-effect waves-dark"
+                    to="/contracts"
                     >
-                    <i className="ti-marker-alt"></i>
+                    <i className="ti-id-badge"></i>
                     <span className="hide-menu">Contracts</span>
-                    </a>
-                    <ul aria-expanded="false" className="collapse">
-                    <li>
-                        <Link to="/on-going-contracts">Ongoing</Link>
-                    </li>
-                    <li>
-                        <Link to="/expired-contracts">Expired</Link>
-                    </li>
-                    <li>
-                        <Link to="/terminated-contracts">Terminated</Link>
-                    </li>
-                    </ul>
-                </li>
-                <li>
-                    {" "}
-                    <a
-                    className="has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
-                    >
-                    <i className="ti-world"></i>
-                    <span className="hide-menu">Ugandans Abroad</span>
-                    </a>
-                    <ul aria-expanded="false" className="collapse">
-                    <li>
-                        <Link to="/through-labor-export">Through Labor Export</Link>
-                    </li>
-                    <li>
-                        <Link to="/other-ugandans">Other Ugandans</Link>
-                    </li>
-                    </ul>
+                    </Link>
                 </li>
                 <li>
                     {" "}
                     <Link
                     className="waves-effect waves-dark"
-                    to="/scanned-ugandans"
+                    to="/travellers"
                     >
                     <i className="ti-id-badge"></i>
-                    <span className="hide-menu">Verified Ugandans</span>
+                    <span className="hide-menu">Travellers</span>
+                    </Link>
+                </li>
+                <li>
+                    {" "}
+                    <Link
+                    className="waves-effect waves-dark"
+                    to="/domestic-workers"
+                    >
+                    <i className="ti-id-badge"></i>
+                    <span className="hide-menu">Domestic Workers</span>
                     </Link>
                 </li>
                 <li>

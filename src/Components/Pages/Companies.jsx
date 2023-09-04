@@ -6,13 +6,15 @@ import Rightmodal from './Rightmodal';
 import Footer from './Footer';
 import BASE_URL from '../apiEndPoints';
 
-class GovernmentAgencies extends Component {
+class Companies extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            agencies: [], // Initialize an empty array to store fetched data
+            companies: [], // Initialize an empty array to store fetched data
             searchQuery: '',
             filterType: 'all', // Initial filter is set to 'all'
+            sortBy: '', // Initial sorting column is empty
+            sortOrder: 'asc', // Initial sorting order is ascending
             currentPage: 1, // Initial page number
             itemsPerPage: 10, // Number of items to display per page
         };
@@ -20,7 +22,7 @@ class GovernmentAgencies extends Component {
 
     componentDidMount() {
         // Fetch data from the API
-        fetch(BASE_URL+'/api/v1/government_bodies/', {
+        fetch(BASE_URL+'/api/v1/companies', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,11 +34,24 @@ class GovernmentAgencies extends Component {
                 if (data.detail) {
                     window.location.href = '/';
                 }
-                this.setState({ agencies: data });
+                this.setState({ companies: data });
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
+    }
+
+    getStatusColor(status) {
+        switch (status) {
+            case 'active':
+                return 'success';
+            case 'inactive':
+                return 'warning';
+            case 'blacklisted':
+                return 'danger';
+            default:
+                return '';
+        }
     }
 
     handleSearchInputChange = (event) => {
@@ -47,49 +62,83 @@ class GovernmentAgencies extends Component {
         this.setState({ filterType: event.target.value });
     };
 
+    handleSort = (column) => {
+        // If the column is already sorted by, reverse the sorting order
+        const sortOrder = this.state.sortBy === column && this.state.sortOrder === 'asc' ? 'desc' : 'asc';
+
+        this.setState({ sortBy: column, sortOrder });
+    };
+
     handlePageChange = (page) => {
         this.setState({ currentPage: page });
     };
 
     render() {
-        const { agencies, searchQuery, filterType, currentPage, itemsPerPage } = this.state;
+        const { companies, searchQuery, filterType, sortBy, sortOrder, currentPage, itemsPerPage } = this.state;
 
-        // Filter agencies based on the filterType
-        const filteredAgencies = agencies.filter((agency) => {
+        // Filter companies based on the filterType
+        const filteredCompanies = companies.filter((company) => {
             if (filterType === 'all') {
                 return true;
             }
-            return agency.type === filterType;
+            return company.type === filterType;
         });
 
-        // Filter agencies based on the search query
-        const searchedAgencies = filteredAgencies.filter((agency) =>
-            agency.contact.full_name.toLowerCase().includes(searchQuery.toLowerCase())
+        // Filter companies based on the search query
+        const searchedCompanies = filteredCompanies.filter(
+            (company) =>
+                company.contact.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                company.registration_number.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
+        // Sort companies based on the selected column and sorting order
+        const sortedCompanies = [...searchedCompanies].sort((a, b) => {
+            const columnA = a[sortBy];
+            const columnB = b[sortBy];
+            const order = sortOrder === 'asc' ? 1 : -1;
+
+            return columnA < columnB ? -order : columnA > columnB ? order : 0;
+        });
+
         // Calculate pagination variables
-        const totalPages = Math.ceil(searchedAgencies.length / itemsPerPage);
+        const totalPages = Math.ceil(sortedCompanies.length / itemsPerPage);
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
-        const currentAgencies = searchedAgencies.slice(startIndex, endIndex);
+        const currentCompanies = sortedCompanies.slice(startIndex, endIndex);
 
-        const tableRows = currentAgencies.map((agency, index) => (
-            <tr key={agency.id}>
+        const tableRows = currentCompanies.map((company, index) => (
+            <tr key={company.id}>
                 <td>{index + 1}</td>
-                <td>{agency.contact.full_name}</td>
+                <td>{company.contact.full_name}</td>
+                <td>{company.email ? company.email.address : 'N/A'}</td>
+                <td>{company.registration_number}</td>
+                <td className='text-capitalize'>
+                    {company.addresses.city} ({company.addresses.country})
+                </td>
                 <td>
-                    <span className={`badge badge-${agency.type === 'ministry' ? 'primary' : 'info'}`}>
-                        {agency.type}
+                    <span className={`badge badge-${company.type === 'local' ? 'primary' : 'info'}`}>
+                        {company.type}
                     </span>
                 </td>
-                <td>{agency.email.address}</td>
-                <td>{agency.phones[index]?.number}</td>
-                <td>{agency.addresses.city}</td>
+                <td>
+                    <span className={`badge badge-${this.getStatusColor(company.status)}`}>
+                        {company.status}
+                    </span>
+                </td>
                 <td>
                     <button className='btn btn-info btn-sm'>View More</button>
                 </td>
             </tr>
         ));
+
+        // Define icons for sorting
+        const sortIcon = (column) => {
+            if (sortBy === column) {
+                return sortOrder === 'asc' ? <i className='fas fa-sort-up'></i> : <i className='fas fa-sort-down'></i>;
+            } else {
+                return null;
+            }
+        };
 
         // Generate pagination buttons
         const paginationButtons = [];
@@ -111,13 +160,13 @@ class GovernmentAgencies extends Component {
                 <Sidebar />
                 <div className='page-wrapper' style={{ marginBottom: '50px' }}>
                     <div className='container-fluid' style={{ marginTop: '80px' }}>
-                        <Breadcrumb pageName="Government Agencies" breadcrumbs={['Home', 'Government Agencies']}/>
+                        <Breadcrumb pageName="Companies" breadcrumbs={['Home', 'Companies']}/>
                         <div className=''>
                             <div className='d-flex justify-content-between mb-3'>
                                 <div className='form-inline'>
                                     <input
                                         type='text'
-                                        placeholder='Search by name'
+                                        placeholder='Search by name or reg'
                                         value={searchQuery}
                                         onChange={this.handleSearchInputChange}
                                         className='form-control'
@@ -129,9 +178,10 @@ class GovernmentAgencies extends Component {
                                         value={filterType}
                                         className='form-control ml-2'
                                     >
-                                        <option value='all'>All Agencies</option>
-                                        <option value='ministry'>Ministry</option>
-                                        <option value='embassy'>Embassy</option>
+                                        <option value='all'>All Companies</option>
+                                        <option value='local'>Local Companies</option>
+                                        <option value='foreign'>Foreign Companies</option>
+                                        {/* Add more options for other types */}
                                     </select>
                                 </div>
                             </div>
@@ -139,12 +189,17 @@ class GovernmentAgencies extends Component {
                                 <thead>
                                     <tr className='table-info'>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Type</th>
+                                        <th onClick={() => this.handleSort('contact.full_name')}>
+                                            Name {sortIcon('contact.full_name')}
+                                        </th>
                                         <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>City</th>
-                                        <th>Options</th> {/* Options column header */}
+                                        <th onClick={() => this.handleSort('registration_number')}>
+                                            Registration Number {sortIcon('registration_number')}
+                                        </th>
+                                        <th>Country</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
+                                        <th>Options</th>
                                     </tr>
                                 </thead>
                                 <tbody>{tableRows}</tbody>
@@ -165,8 +220,8 @@ class GovernmentAgencies extends Component {
                                 >
                                     Next
                                 </button>
-                                <div className='pagination-info mt-2 ml-3 mb-2'>
-                                    Page {currentPage} of {totalPages}, Showing {startIndex + 1}-{endIndex} of {searchedAgencies.length} items
+                                <div className='pagination-info mt-2 ml-2 mb-2'>
+                                    Page {currentPage} of {totalPages}, Showing {startIndex + 1}-{endIndex} of {sortedCompanies.length} items
                                 </div>
                             </div>
                         </div>
@@ -179,4 +234,4 @@ class GovernmentAgencies extends Component {
     }
 }
 
-export default GovernmentAgencies;
+export default Companies;

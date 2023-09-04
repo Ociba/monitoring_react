@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BASE_URL from '../apiEndPoints';
 import Background from './image1.jpg';
 
 class Login extends Component {
@@ -20,7 +21,7 @@ class Login extends Component {
         event.preventDefault();
         const { username, password } = this.state;
         try {
-            const response = await fetch('http://localhost:8000/api/token/', {
+            const response = await fetch(BASE_URL+'/api/token/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
