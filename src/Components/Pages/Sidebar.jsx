@@ -36,7 +36,14 @@ class Sidebar extends Component {
                 </li>
                 <li>
                     {" "}
-                    <Link className="waves-effect waves-dark" to="/staff">
+                    <Link className="waves-effect waves-dark" to="/company-users">
+                    <i className="ti-user"></i>
+                    <span className="hide-menu">Company Users</span>
+                    </Link>
+                </li>
+                <li>
+                    {" "}
+                    <Link className="waves-effect waves-dark" to="/all-users">
                     <i className="ti-user"></i>
                     <span className="hide-menu">System Users</span>
                     </Link>
