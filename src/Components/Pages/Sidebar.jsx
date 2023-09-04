@@ -36,17 +36,22 @@ class Sidebar extends Component {
                 </li>
                 <li>
                     {" "}
-                    <Link className="waves-effect waves-dark" to="/company-users">
+                    <a
+                    className="has-arrow waves-effect waves-dark"
+                    href="javascript:void(0)"
+                    aria-expanded="false"
+                    >
                     <i className="ti-user"></i>
-                    <span className="hide-menu">Company Users</span>
-                    </Link>
-                </li>
-                <li>
-                    {" "}
-                    <Link className="waves-effect waves-dark" to="/all-users">
-                    <i className="ti-user"></i>
-                    <span className="hide-menu">System Users</span>
-                    </Link>
+                    <span className="hide-menu">Users</span>
+                    </a>
+                    <ul aria-expanded="false" className="collapse">
+                    <li>
+                        <Link to="/company-users">Company</Link>
+                    </li>
+                    <li>
+                        <Link to="/all-users">System</Link>
+                    </li>
+                    </ul>
                 </li>
                 <li>
                     {" "}
@@ -60,54 +65,10 @@ class Sidebar extends Component {
                     </a>
                     <ul aria-expanded="false" className="collapse">
                     <li>
-                        <Link to="/emergency-complaints">Emergency</Link>
+                        <Link to="/pending-complaints">Personal</Link>
                     </li>
                     <li>
-                        <Link to="/pending-complaints">Normal</Link>
-                    </li>
-                    <li>
-                        <Link to="/solved-complaints">Solved</Link>
-                    </li>
-                    </ul>
-                </li>
-                <li>
-                    {" "}
-                    <a
-                    className="has-arrow waves-effect waves-dark"
-                    href="javascript:void(0)"
-                    aria-expanded="false"
-                    >
-                    <i className="ti-alarm-clock"></i>
-                    <span className="hide-menu">Escalated Complaints</span>
-                    </a>
-                    <ul aria-expanded="false" className="collapse">
-                    <li>
-                        <Link to="/escalated-emergency-complaints">Emergency</Link>
-                    </li>
-                    <li>
-                        <Link to="/escalated-pending-complaints">Normal</Link>
-                    </li>
-                    <li>
-                        <Link to="/escaled-solved-complaints">Solved</Link>
-                    </li>
-                    </ul>
-                </li>
-                <li>
-                    {" "}
-                    <a
-                        className="has-arrow waves-effect waves-dark"
-                        href="javascript:void(0)"
-                        aria-expanded="false"
-                    >
-                    <i className="ti-microphone"></i>
-                    <span className="hide-menu">Public Complaints</span>
-                    </a>
-                    <ul aria-expanded="false" className="collapse">
-                    <li>
-                        <Link to="/public-complaints">Normal</Link>
-                    </li>
-                    <li>
-                        <Link to="/public-solved-complaints">Solved</Link>
+                        <Link to="/public-complaints">Public</Link>
                     </li>
                     </ul>
                 </li>
