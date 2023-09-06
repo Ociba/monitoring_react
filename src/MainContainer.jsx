@@ -5,14 +5,9 @@ import GovernmentAgencies from './Components/Pages/GovernmentAgencies';
 import Companies from './Components/Pages/Companies';
 import SystemUsers from './Components/Pages/SystemUsers';
 import CompanyUsers from './Components/Pages/CompanyUsers';
-import EmergencyComplaints from './Components/Pages/EmergencyComplaints';
-import NormalComplaints from './Components/Pages/NormalComplaints';
-import SolvedComplaints from './Components/Pages/SolvedComplaints';
-import EscalatedEmergencyComplaints from './Components/Pages/EscalatedEmergencyComplaints';
-import EscalatedNormalComplaints from './Components/Pages/EscalatedNormalComplaints';
-import EscalatedSolvedComplaints from './Components/Pages/EscalatedSolvedComplaints';
-import PublicNormalComplaints from './Components/Pages/PublicNormalComplaints';
-import PublicSolvedComplaints from './Components/Pages/PublicSolvedComplaints';
+import EmergencyComplaints from './Components/Pages/Complaints/Emergency';
+import PersonalComplaints from './Components/Pages/Complaints/Personal';
+import PublicComplaints from './Components/Pages/Complaints/Public';
 import Contracts from './Components/Pages/Contracts';
 import Travellers from './Components/Pages/Travellers';
 import DomesticWorkers from './Components/Pages/DomesticWorkers';
@@ -40,14 +35,9 @@ class MainContainer extends Component {
                         <Route path='/companies' element ={<Companies />} />
                         <Route path='/all-users' element ={<SystemUsers />} />
                         <Route path='/company-users' element ={<CompanyUsers />} />
-                        <Route path='/emergency-complaints' element ={<EmergencyComplaints />} />
-                        <Route path='/pending-complaints' element ={<NormalComplaints />} />
-                        <Route path='/solved-complaints' element ={<SolvedComplaints />} />
-                        <Route path='/escalated-emergency-complaints' element ={<EscalatedEmergencyComplaints />} />
-                        <Route path='/escalated-pending-complaints' element ={<EscalatedNormalComplaints />} />
-                        <Route path='/escaled-solved-complaints' element ={<EscalatedSolvedComplaints />} />
-                        <Route path='/public-complaints' element ={<PublicNormalComplaints />} />
-                        <Route path='/public-solved-complaints' element ={<PublicSolvedComplaints />} />
+                        <Route path='/complaints/emergency' element ={<EmergencyComplaints />} />
+                        <Route path='/complaints/personal' element ={<PersonalComplaints />} />
+                        <Route path='/complaints/public' element ={<PublicComplaints />} />
                         <Route path='/contracts' element ={<Contracts />} />
                         <Route path='/travellers' element ={<Travellers />} />
                         <Route path='/domestic-workers' element ={<DomesticWorkers />} />

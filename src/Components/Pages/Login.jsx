@@ -21,7 +21,7 @@ class Login extends Component {
         event.preventDefault();
         const { username, password } = this.state;
         try {
-            const response = await fetch(BASE_URL+'/api/token/', {
+            const response = await fetch(BASE_URL+'/api/v1/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -35,8 +35,8 @@ class Login extends Component {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data.access)
-                localStorage.setItem('access_token',data.access)
-                localStorage.setItem('refresh_token',data.refresh)
+                localStorage.setItem('access_token',data.access_token)
+                localStorage.setItem('refresh_token',data.refresh_token)
                 window.location.href = "/dashboard"
                 // Handle successful login (e.g., store token and navigate to a new page)
             } else {

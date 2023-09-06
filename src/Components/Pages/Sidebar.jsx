@@ -65,10 +65,13 @@ class Sidebar extends Component {
                     </a>
                     <ul aria-expanded="false" className="collapse">
                     <li>
-                        <Link to="/pending-complaints">Personal</Link>
+                        <Link to="/complaints/personal">Personal</Link>
                     </li>
                     <li>
-                        <Link to="/public-complaints">Public</Link>
+                        <Link to="/complaints/public">Public</Link>
+                    </li>
+                    <li>
+                        <Link to="/complaints/emergency">Emergency</Link>
                     </li>
                     </ul>
                 </li>
