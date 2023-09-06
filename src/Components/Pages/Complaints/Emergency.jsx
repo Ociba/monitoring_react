@@ -15,7 +15,7 @@ class EmergencyComplaints extends Component {
 
     componentDidMount() {
         // Establish a WebSocket connection to receive video frames
-        const socket = new WebSocket('ws://localhost:8000/ws/video_stream/'); // Update the WebSocket URL
+        const socket = new WebSocket('ws://localhost:8000/ws/video/'); // Update the WebSocket URL
         socket.onmessage = (event) => {
             // Update the video stream URL when receiving new video frames
             this.setState({ videoStream: URL.createObjectURL(event.data) });
