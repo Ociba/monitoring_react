@@ -34,9 +34,9 @@ class Login extends Component {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data.access)
-                localStorage.setItem('access_token',data.access_token)
-                localStorage.setItem('refresh_token',data.refresh_token)
+                console.log(data)
+                localStorage.setItem('access_token',data.access)
+                localStorage.setItem('refresh_token',data.refresh)
                 window.location.href = "/dashboard"
                 // Handle successful login (e.g., store token and navigate to a new page)
             } else {
