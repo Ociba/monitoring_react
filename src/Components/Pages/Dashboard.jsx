@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Cards from './Cards';
-import Graphs from './Graphs';import Navbar from './Navbar'
+import CallGraphs from './CallGraphs';
+import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import Breadcrumb from './Breadcrumb'
 import Rightmodal from './Rightmodal'
@@ -18,7 +19,7 @@ class Dashboard extends Component {
                             <Breadcrumb pageName="Dashboard" breadcrumbs={['Home', 'Dashboard']} />
                             <div>
                             <Cards/>
-                            <Graphs/>
+                            <CallGraphs/>
                         </div>
                             <Rightmodal />
                         </div>

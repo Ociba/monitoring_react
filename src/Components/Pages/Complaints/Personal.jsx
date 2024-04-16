@@ -27,7 +27,7 @@ class PersonalComplaints extends Component {
 
     fetchComplaints = () => {
         // Replace the URL with your actual API endpoint
-        fetch(BASE_URL+'/api/v1/complaints/personal/', {
+        fetch(BASE_URL+'/api/v1/complaints/personal', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

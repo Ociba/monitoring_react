@@ -1,83 +1,47 @@
 import React, { Component } from 'react';
+import { Chart, registerables } from 'chart.js';
+
+// Register necessary chart components
+Chart.register(...registerables);
 
 class Graphs extends Component {
-    render () {
-        return (
-            
-            <React.Fragment>
-                <div className="row">
-                    <div className="col-lg-6 col-md-12">
-                        <div className="card">
-                            <div className="card-title text-left mt-2 m-l-15">A line graph of complaints sent per month</div>
-                            <div className="card-body">
-                            <canvas id="chart-graph" height="250" style={{width:"100%"}} className="chartjs-demo"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 col-md-12">
-                        <div className="card">
-                        <div className="card-title text-left mt-2 m-l-15">A Bar graph of complaints recieved per month</div>
-                            <div className="card-body">
-                            <canvas id="chart-bars" height="250" style={{width:"100%"}} className="chartjs-demo"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-lg-6 col-md-12">
-                        <div className="card">
-                            <div className="card-title text-left mt-2 m-l-15">A Pie Chart Showing Users of the System</div>
-                            <div className="card-body">
-                            <canvas id="chart-pie" height="250" style={{width:"100%"}} className="chartjs-demo"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 col-md-12">
-                        <div className="card">
-                        <div className="card-title text-left mt-2 m-l-15">Most Vs Least Complaining Company</div>
-                            <div className="card-body">
-                            <canvas id="chart-bars2" height="250" style={{width:"100%"}} className="chartjs-demo"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-lg-12 col-md-12">
-                        <div className="card">
-                            <div className="card-title text-left mt-2 m-l-15">A Bar graph of complaints recieved per company</div>
-                            <div className="card-body">
-                            <canvas id="chart-bars3" height="250" style={{width:"100%"}} className="chartjs-demo"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    constructor(props) {
+        super(props);
+        this.chartRef = React.createRef();
+    }
 
-                <div className="row">
-                    <div className="col-lg-6 col-md-12">
-                        <div className="card">
-                            <div className="card-title text-left mt-2 m-l-15"> 
-                                A line Graph Showing Emergency,Pending and Escalated Complaints<br />
-                                <button className='btn btn-sm waves-effect waves-light bg-danger text-white m-r-5'>Pending</button>
-                                <button className='btn btn-sm waves-effect waves-light bg-success text-white m-r-5'>Emergency</button>
-                                <button className=' btn btn-sm waves-effect waves-light bg-info text-white'>Escalation</button>
-                            </div>
-                            <div className="card-body">
-                            <canvas id="chart-graph2" height="250" style={{width:"100%"}} className="chartjs-demo"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-6 col-md-12">
-                        <div className="card">
-                        <div className="card-title text-left mt-2 m-l-15"> Bar Graph Showing Pending and Solved Complaints Per Company</div>
-                            <div className="card-body">
-                            <canvas id="chart-bars4" height="250" style={{width:"100%"}} className="chartjs-demo"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </React.Fragment>
-            
+    componentDidMount() {
+        // Use Chart.js here to create your charts
+        const ctx = this.chartRef.current.getContext('2d');
+        // Check if there's an existing chart instance and destroy it
+        if (this.chartInstance) {
+            this.chartInstance.destroy();
+        }
+        // Dynamically create chart based on the type prop
+        this.chartInstance = new Chart(ctx, {
+            type: this.props.type,
+            data: {
+                labels: this.props.labels,
+                datasets: [{
+                    label: this.props.datasetLabel,
+                    data: this.props.data,
+                    backgroundColor: this.props.backgroundColor,
+                    borderColor: this.props.borderColor,
+                    borderWidth: 1
+                }]
+            },
+            options: this.props.options || {}
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                {/* Your chart canvas element */}
+                <canvas ref={this.chartRef} width="400" height="400"></canvas>
+            </div>
         );
     }
 }
+
 export default Graphs;

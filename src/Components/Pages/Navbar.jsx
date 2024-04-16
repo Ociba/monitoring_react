@@ -4,8 +4,8 @@ import jwt_decode from "jwt-decode";
 class Navbar extends Component {
     render() { 
         return (
-            <header className="topbar mb-5" style={{position:'fixed',width:'100%'}}>
-            <nav className="navbar top-navbar navbar-expand-md navbar-dark" >
+            <header className="topbar mb-5" style={{position:'fixed',width:'100%',backgroundColor: "#6610f2"}}>
+            <nav className="navbar top-navbar navbar-expand-md navbar-dark">
                 <div className="navbar-header">
                     <a className="navbar-brand" href="#!">
                         <span className="hidden-xs"><span className="font-bold">Monitoring</span></span>

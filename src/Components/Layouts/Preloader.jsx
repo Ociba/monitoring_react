@@ -6,7 +6,7 @@ class Preloader extends Component {
             <div class="preloader">
                 <div class="loader">
                     <div class="loader__figure"></div>
-                    <p class="loader__label">myjome Online Shop</p>
+                    <p class="loader__label">monitoring</p>
                 </div>
             </div>
         );
